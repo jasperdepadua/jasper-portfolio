@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+@layer base;
+@import 'tailwindcss/preflight.css' layer(base);
+
+@theme {
+  /* BREAKPOINTS */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-2K: 2560px;
+  --breakpoint-4K: 3840px;
+  --breakpoint-8K: 7680px;
+
+  /* FONT FAMILIES */
+  --font-sans: 'RubikVarWeight', sans-serif;
+  --font-orbitron: 'OrbitronVarWeight', sans-serif;
+  --font-rubik: 'RubikVarWeight', sans-serif;
+
+  /* COLORS */
+  --color-black-*: initial;
+  --color-black: #0d0d0d;
+  --color-true-black: #000000;
+  --color-soft-black: #121212;
+  --color-grey-*: initial;
+  --color-grey: #f5f5f5;
+  --color-grey-secondary: #cccccc;
+  --color-light-grey: #adadad;
+  --color-primary: #ffd100; /* Bright Yellow */
+  --color-vivid-violet: #8b00ff;
+  --color-future-teal: #1de9b6;
+  --color-orange-red: #ff5722;
+}
+
+@font-face {
+  font-family: 'OrbitronVarWeight';
+  src: url('./assets/fonts/OrbitronVarWeight.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RubikVarWeight';
+  src: url('./assets/fonts/RubikVarWeight.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  p,
+  a,
+  div,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-rubik text-base leading-tight text-white;
+  }
+}
+
+/* Base (up to 1440px) */
+html {
+  font-size: 16px; /* Fixed base size */
+}
+
+/* From 1441px to 7680px, scale fluidly */
+@media (min-width: 1441px) {
+  html {
+    font-size: clamp(16px, calc(16px + ((100vw - 1440px) / 6240) * 16), 32px);
+  }
+}
